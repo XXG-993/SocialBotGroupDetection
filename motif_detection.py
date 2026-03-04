@@ -1,6 +1,3 @@
-
-#! /home/xxy/anaconda3/envs/py38/bin/python
-
 import networkx as nx
 import numpy as np
 from scipy import sparse
