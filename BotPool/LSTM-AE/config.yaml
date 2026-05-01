@@ -1,0 +1,16 @@
+Twibot20_data_path: dir
+Renmin_data_path: dir
+log_path: dir
+save_path: dir
+
+drop_out: 0.3
+hidden_dim: 64
+input_dim : 774
+output_dim: 64
+hidden_num_layer: 2
+seq_len: 199
+classify_dim: 6
+
+lr: 0.001
+epoch: 128
+batch_size: 256

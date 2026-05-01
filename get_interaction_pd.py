@@ -127,7 +127,7 @@ for u in tqdm(with_label_json):
                             if mo_index != "unkwnown":
                                 mention_matrix_label[node_index,mo_index] += 1
                                 
-with open(dirs+"process/retweet_matrix_label.pickle","wb") as f:
+with open(dirs+"retweet_matrix_label.pickle","wb") as f:
     pickle.dump(retweet_matrix_label, f)
-with open(dirs+"process/mention_matrix_label.pickle","wb") as f:
+with open(dirs+"mention_matrix_label.pickle","wb") as f:
     pickle.dump(mention_matrix_label, f)

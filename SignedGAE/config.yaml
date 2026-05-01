@@ -1,0 +1,40 @@
+data_path: dir
+log_path: dir
+save_path: dir
+g_path: dir
+
+retweet_path: dir
+mention_path: dir
+url_path: dir
+hashtag_path: dir
+
+
+drop_out: 0.3
+hidden_dim: 128
+input_dim : 128
+feature_input : 16
+output_dim: 128
+hidden_num_layer: 2
+
+layers: 2
+
+lambda: 0.5
+beta: 0.5
+
+encoder_dim1: 128
+encoder_dim2: 128
+encoder_dim3: 128
+
+decoder_dim1: 128
+decoder_dim2: 128
+decoder_dim3: 128
+
+n_cluster: 20
+v: 1
+sigma: 0.5
+
+lr: 0.001
+epoch: 256
+batch_size: 64
+epoch_pre: 64
+

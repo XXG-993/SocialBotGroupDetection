@@ -34,7 +34,7 @@ np.random.seed(123)
 # # (a,b) a-b
 # def motif_find1(adj, node):
 #     '''
-#     从某个节点node开始出发，寻找模体1
+#     Enumerate motif type 1 starting from node.
 #     :param adj:
 #     :param node:
 #     :return:
@@ -62,10 +62,9 @@ np.random.seed(123)
 
 def motif_parallel(adj,node_list):
     '''
-    模体识别，已获得数据
-    :param adj: lil_matrix
-    快速按行切片，高效查找
-    每个进程获得需要开始查找的node_list
+    Parallel motif enumeration over node_list.
+    :param adj: lil_matrix (efficient row slicing)
+    :param node_list: nodes each worker starts from
     :return:
     '''
     '''for i in node_list:
@@ -97,7 +96,7 @@ def motif_parallel(adj,node_list):
 # (a,b,c) a-b,a-c
 def motif_find1(adj, node):
     '''
-    从某个节点node开始出发，寻找模体1
+    Motif family 1 from node: (a,b,c) with a-b and a-c, no b-c.
     :param adj:
     :param node:
     :return:
@@ -138,7 +137,7 @@ def motif_find1(adj, node):
 # (a,b,c) a-b,b-c,c-a
 def motif_find2(adj, node):
     '''
-    从某个节点node开始出发，寻找模体2
+    Motif family 2 from node: (a,b,c) with a-b, b-c, c-a (triangle).
     :param adj:
     :param node:
     :return:
@@ -174,7 +173,7 @@ def motif_find2(adj, node):
 
 def motif_part1(adj, node):
     '''
-    连边种类1 A->B B->A
+    Neighbors j with both directed edges j->node and node->j (mutual).
     :param adj:
     :param node:
     :return:
@@ -223,8 +222,8 @@ if __name__ == '__main__':
     #max_weight
     
     dirs =  "./dataset/Twibot-20/"
-    retweet_matrix = load_data(dirs+"process/retweet_matrix_label.pickle")
-    mention_matrix = load_data(dirs+"process/mention_matrix_label.pickle")
+    retweet_matrix = load_data(dirs+"retweet_matrix_label.pickle")
+    mention_matrix = load_data(dirs+"mention_matrix_label.pickle")
     
     retweet_matrix[np.eye(len(retweet_matrix),dtype=np.bool_)] = 0
     mention_matrix[np.eye(len(retweet_matrix),dtype=np.bool_)] = 0
@@ -236,7 +235,7 @@ if __name__ == '__main__':
     co_retweet_matrix = co_retweet_matrix[:random_k,:][:,:random_k]
     co_mention_matrix = co_mention_matrix[:random_k,:][:,:random_k]
     
-    node_ids = load_data(dirs+"process/node_list.pickle")
+    node_ids = load_data(dirs+"node_list.pickle")
     labels = np.load(dirs+"node_labels.npy")
     
     bot_index = np.where(labels>0)[0]
@@ -248,7 +247,7 @@ if __name__ == '__main__':
     adj = sparse.lil_matrix(co_retweet_matrix+co_mention_matrix)
     node_list = nx.nodes(G3)
     motifs = motif_parallel(adj, node_list)
-    with open(dirs+"process/interaction_3motifs-200.pickle", "wb") as f:
+    with open(dirs+"interaction_3motifs-200.pickle", "wb") as f:
         pickle.dump(motifs, f)
         
         
@@ -259,7 +258,7 @@ if __name__ == '__main__':
     # adj = sparse.lil_matrix(co_retweet_matrix)
     # node_list = nx.nodes(G1)
     # motifs = motif_parallel(adj, node_list)
-    # with open(dirs+"process/retweet_3motifs-1000.pickle", "wb") as f:
+    # with open(dirs+"retweet_3motifs-1000.pickle", "wb") as f:
     #     pickle.dump(motifs, f)
     
     # print("mention_3motifs")
@@ -268,6 +267,6 @@ if __name__ == '__main__':
     # adj = sparse.lil_matrix(co_mention_matrix)
     # node_list = nx.nodes(G2)
     # motifs = motif_parallel(adj, node_list)
-    # with open(dirs+"process/mention_3motifs-1000.pickle", "wb") as f:
+    # with open(dirs+"mention_3motifs-1000.pickle", "wb") as f:
     #     pickle.dump(motifs, f)
     

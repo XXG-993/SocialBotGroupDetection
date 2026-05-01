@@ -1,0 +1,31 @@
+Twibot20_data_path: dir
+Twibot20_g_path: dir
+Renmin_data_path: dir
+Renmin_g_path: dir
+log_path: dir
+save_path: dir
+
+Twibot20_retweet_path: dir
+Twibot20_mention_path: dir
+
+
+hidden_dim: 128
+input_dim : 16
+feature_input : 16
+output_dim: 128
+hidden_num_layer: 2
+lambda1: 0.1
+lambda2: 0.01
+lambda3: 1
+lambda4: 0.01
+
+
+n_cluster: 10
+v: 1
+sigma: 0.5
+
+lr: 0.0001
+epoch: 256
+epoch_pre: 16
+batch_size: 512
+

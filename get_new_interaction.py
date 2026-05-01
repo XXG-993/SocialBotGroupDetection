@@ -19,12 +19,12 @@ def find(ls, item):
     return False
 
 dirs = "./dataset/Twibot-20/"
-# with open (dirs+"process/interaction_simple_pd.pickle", 'rb') as f:
+# with open (dirs+"interaction_simple_pd.pickle", 'rb') as f:
 #     interaction_simple_pd = pickle.load(f)
 interaction_simple_pd = pd.read_csv(dirs+"interaction_simple_pd.csv")
-with open (dirs+"process/union_name.pickle", 'rb') as f:
+with open (dirs+"union_name.pickle", 'rb') as f:
     union_name = pickle.load(f)
-with open (dirs+"process/node_id_sorted.pickle", 'rb') as f:
+with open (dirs+"node_id_sorted.pickle", 'rb') as f:
     node_id_sorted = pickle.load(f)
     
 update_row_list = []

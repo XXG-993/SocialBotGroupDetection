@@ -136,5 +136,5 @@ for u in tqdm(with_label_json):
                             else:
                                 hashtag_dict[h] = [user_id]
                                 
-with open(dirs+"process/node_label_hashtag_matrix.pickle","rb") as f:
+with open(dirs+"node_label_hashtag_matrix.pickle","rb") as f:
     node_label_hashtag_matrix = pickle.load(f)
